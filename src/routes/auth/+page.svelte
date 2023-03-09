@@ -2,10 +2,13 @@
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
 	import { fade, fly, slide } from 'svelte/transition';
+	import { applyAction, enhance } from '$app/forms';
+	import { pb } from '$lib/pb';
 	export let data: PageData;
 
 	let email = '';
 	let password = '';
+	let confirmPassword = '';
 
 	let isGuest = false;
 
@@ -25,15 +28,58 @@
 				Log in
 			{/if}
 		</h1>
-		<form class="space-y-4 variant-form-material p-4">
+		<form
+			action={isGuest ? '?/signup' : '?/login'}
+			method="post"
+			use:enhance={() => {
+				return async ({ result }) => {
+					pb.authStore.loadFromCookie(document.cookie);
+					await applyAction(result);
+				};
+			}}
+			class="space-y-4 variant-form-material p-4"
+		>
 			<label for="email" class="label"
 				>Email
-				<span><input type="email" id="email" name="email" class="input" required /></span>
+				<span
+					><input
+						type="email"
+						id="email"
+						name="email"
+						class="input"
+						bind:value={email}
+						required
+					/></span
+				>
 			</label>
 			<label for="password" class="label"
 				>Password
-				<span><input type="password" id="password" name="password" class="input" required /></span>
+				<span
+					><input
+						type="password"
+						id="password"
+						name="password"
+						class="input"
+						bind:value={password}
+						required
+					/></span
+				>
 			</label>
+			{#if isGuest}
+				<label for="confirmPassword" class="label"
+					>Confirm password
+					<span
+						><input
+							type="password"
+							id="consfirmPassword"
+							name="consfirmPassword"
+							class="input"
+							bind:value={confirmPassword}
+							required
+						/></span
+					>
+				</label>
+			{/if}
 			<div class="flex justify-between py-2 items-center">
 				{#if isGuest}
 					<a href={$page.url.pathname} class="text-sm ">Already have an account?</a>
@@ -45,11 +91,11 @@
 			</div>
 		</form>
 		{#if !isGuest}
-			<div in:slide={{delay: 300}} out:slide class="card-footer text-center">
+			<div in:slide={{ delay: 300 }} out:slide class="card-footer text-center">
 				<a href="#" class="">Forgot password?</a>
 			</div>
 		{:else}
-			<div in:slide={{delay: 300}} out:slide class="card-footer text-center">
+			<div in:slide={{ delay: 300 }} out:slide class="card-footer text-center">
 				<span class="block">Accounts are disabled by default.</span>
 				<a href="#" class="">Rquest access</a>
 			</div>

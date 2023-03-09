@@ -1,18 +1,18 @@
-# fly.toml file generated for skymanager on 2023-03-01T15:42:03-05:00
+# fly.toml file generated for giobrows on 2023-03-07T19:10:24-05:00
 
-app = "skymanager"
+app = "giobrows"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
-
-[mounts]
-  destination = "/app/pb_data"
-  source = "pb_data"
 
 [env]
 
 [experimental]
   auto_rollback = true
+
+[mounts]
+  destination = "/app/pb_data"
+  source = "pb_data"
 
 [[services]]
   http_checks = []
