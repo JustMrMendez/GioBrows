@@ -1,12 +1,36 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import Cart from '$lib/modals/Cart.svelte';
 	import Logo from '$lib/shared/Logo.svelte';
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
+	import {
+		AppBar,
+		Drawer,
+		drawerStore,
+		LightSwitch,
+		type DrawerSettings
+	} from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	function drawerOpenStyled(): void {
+		const settings: DrawerSettings = {
+			id: 'notifications',
+			// Provide your property overrides:
+			bgDrawer: 'bg-surface-100-800-token',
+			bgBackdrop: 'bg-surface-900/50',
+			width: 'w-[280px] md:w-[480px]',
+			padding: 'p-4',
+			rounded: 'rounded-xl',
+			position: 'right'
+		};
+		drawerStore.open(settings);
+	}
 </script>
 
+<Drawer>
+	<Cart />
+</Drawer>
 <AppBar
 	padding="p-4 w-full"
 	gridColumns="grid-cols-3"
@@ -26,6 +50,9 @@
 		{:else}
 			<li>
 				<a href="/auth">Login</a>
+			</li>
+			<li>
+				<button on:click={drawerOpenStyled}>Cart</button>
 			</li>
 		{/if}
 	</ul>

@@ -1,7 +1,9 @@
 import { pb } from '$lib/pb';
-import type { Handle } from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	const protectedRoutes = ['/app'];
+
 	// before
 	pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 	if (pb.authStore.isValid) {
@@ -15,11 +17,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.pb = pb;
 	event.locals.user = structuredClone(pb.authStore.model);
 
+	if (protectedRoutes.includes(event.url.pathname) && !pb.authStore.isValid) {
+		throw redirect(302, '/auth');
+	}
+
 	const response = await resolve(event);
 	// after
 	response.headers.set('set-cookie', pb.authStore.exportToCookie({ httpOnly: false }));
-
-	console.log(event.locals.user);
 
 	return response;
 };
