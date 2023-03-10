@@ -10,6 +10,7 @@ export const actions: Actions = {
 
 		try {
 			await locals.pb.collection('users').authWithPassword(data.email, data.password);
+			// await locals.pb.admins.authWithPassword(data.email, data.password);
 		} catch (e) {
 			console.error(e);
 			throw e;
@@ -26,6 +27,7 @@ export const actions: Actions = {
 
 		try {
 			await locals.pb.collection('users').create(data);
+			// await locals.pb.collection('users').authWithPassword(data.email, data.password);
 		} catch (e) {
 			console.error(e);
 			throw e;

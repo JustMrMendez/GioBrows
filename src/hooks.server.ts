@@ -13,12 +13,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	event.locals.pb = pb;
-	event.locals.user = structuredClone(pb.authStore.model) as typeof event.locals.user;
+	event.locals.user = structuredClone(pb.authStore.model);
 
 	const response = await resolve(event);
-
 	// after
 	response.headers.set('set-cookie', pb.authStore.exportToCookie({ httpOnly: false }));
+
+	console.log(event.locals.user);
 
 	return response;
 };

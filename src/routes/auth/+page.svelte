@@ -8,7 +8,7 @@
 
 	let email = '';
 	let password = '';
-	let confirmPassword = '';
+	let passwordConfirm = '';
 
 	let isGuest = false;
 
@@ -66,15 +66,15 @@
 				>
 			</label>
 			{#if isGuest}
-				<label for="confirmPassword" class="label"
+				<label for="passwordConfirm" class="label"
 					>Confirm password
 					<span
 						><input
 							type="password"
-							id="consfirmPassword"
-							name="consfirmPassword"
+							id="passwordConfirm"
+							name="passwordConfirm"
 							class="input"
-							bind:value={confirmPassword}
+							bind:value={passwordConfirm}
 							required
 						/></span
 					>
