@@ -32,7 +32,8 @@
 	<Cart />
 </Drawer>
 <AppBar
-	padding="p-4 w-full"
+	class="fixed top-0 z-50"
+	padding="px-4 py-2 w-full"
 	gridColumns="grid-cols-3"
 	slotDefault="place-self-center"
 	slotTrail="place-content-end"
@@ -60,4 +61,5 @@
 		<LightSwitch height="h-6" />
 	</svelte:fragment>
 </AppBar>
-<slot />
+
+	<slot />
