@@ -34,4 +34,4 @@
 
 <Modal {components} />
 
-	<slot />
+<slot />

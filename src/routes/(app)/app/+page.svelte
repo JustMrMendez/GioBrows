@@ -4,4 +4,6 @@
 	export let data: PageData;
 </script>
 
-<hi>Test</hi>
+<hi>
+	{data.user?.email}
+</hi>

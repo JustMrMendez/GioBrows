@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import Logo from '$lib/shared/Logo.svelte';
 	import { LightSwitch, AppBar, Avatar, type PopupSettings, popup } from '@skeletonlabs/skeleton';
 
@@ -25,7 +26,9 @@
 				</ul>
 			</slot>
 			<div class="flex h-fit items-center justify-center space-x-4 p-2 align-middle">
-				<button class="btn variant-ghost-primary">Log out</button>
+				<form method="post" use:enhance action="/auth?/logout">
+					<button type="submit" class="btn variant-ghost-primary">Log out</button>
+				</form>
 				<LightSwitch width="!w-12" rounded="rounded" />
 			</div>
 			<div class="arrow variant-filled-surface" data-arrow />

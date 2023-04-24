@@ -62,4 +62,4 @@
 	</svelte:fragment>
 </AppBar>
 
-	<slot />
+<slot />
