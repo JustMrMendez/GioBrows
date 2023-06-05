@@ -1,3 +1,7 @@
+<script>
+	
+</script>
+
 <a
 	href="/"
 	class="group text-xl text-primary-600-300-token font-bold text-center [&>*]:transition-all [&>*]:duration-300"

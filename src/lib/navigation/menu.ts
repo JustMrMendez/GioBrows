@@ -1,13 +1,6 @@
 import {
-	Banknotes,
 	BookOpen,
-	ChartBar,
-	CheckCircle,
 	Home,
-	InformationCircle,
-	PaintBrush,
-	Pencil,
-	ViewColumns
 } from 'svelte-heros-v2';
 
 export interface NavLink {

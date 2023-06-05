@@ -2,15 +2,15 @@
 	/* =~= Theme Properties =~= */
 	--theme-font-family-base: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
 		'Courier New', monospace;
-	--theme-font-family-heading: system-ui;
+	--theme-font-family-heading: 'Solitero';
 	--theme-font-color-base: 0 0 0;
 	--theme-font-color-dark: 255 255 255;
 	--theme-rounded-base: 9999px;
 	--theme-rounded-container: 8px;
 	--theme-border-base: 1px;
 	/* =~= Theme On-X Colors =~= */
-	--on-primary: 0 0 0;
-	--on-secondary: 0 0 0;
+	--on-primary: 255 255 255;
+	--on-secondary: 255 255 255;
 	--on-tertiary: 255 255 255;
 	--on-success: 255 255 255;
 	--on-warning: 255 255 255;
@@ -94,4 +94,56 @@
 	--color-surface-700: 99 40 182; /* ⬅ #6328b6 */
 	--color-surface-800: 79 32 145; /* ⬅ #4f2091 */
 	--color-surface-900: 65 26 119; /* ⬅ #411a77 */
+	/* gradients */
+	--gradient1: linear-gradient(
+		90deg,
+		rgba(var(--color-surface-50) / 1) 0%,
+		rgba(var(--color-surface-100) / 1) 51%,
+		rgba(var(--color-surface-200) / 1) 74%,
+		rgba(var(--color-surface-300) / 1) 100%
+	);
+	--gradient2: linear-gradient(
+		90deg,
+		rgba(var(--color-surface-400) / 1) 0%,
+		rgba(var(--color-surface-500) / 1) 29%,
+		rgba(var(--color-surface-600) / 0.93) 37%,
+		rgba(var(--color-surface-700) / 0.73) 52%,
+		rgba(var(--color-surface-800) / 0.02) 80%,
+		rgba(var(--color-surface-900) / 0) 100%
+	);
+	--gradient3: linear-gradient(
+		90deg,
+		rgba(var(--color-surface-900) / 1) 0%,
+		rgba(var(--color-surface-800) / 0.81) 9%,
+		rgba(var(--color-surface-700) / 0.36) 26%,
+		rgba(var(--color-surface-600) / 0.09) 53%,
+		rgba(var(--color-surface-500) / 0) 90%,
+		rgba(var(--color-surface-400) / 0) 100%
+	);
+
 }
+
+/* .bg-gradient-500 {
+	background-image: var(--gradient1), var(--gradient2), var(--gradient3);
+	background-blend-mode: multiply;
+} */
+
+.bg-gradient-500 {
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-image: url('/svg/primary-surface.svg');
+}
+
+/* .spacer {
+	aspect-ratio: 960/300;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.wave {
+	background-image: url('/svg/wave.svg');
+} */

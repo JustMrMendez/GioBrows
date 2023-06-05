@@ -10,9 +10,14 @@ body {
 	--theme-border-base: 0px;
 } */
 .gradient-heading {
-	@apply bg-clip-text text-transparent box-decoration-clone;
+	@apply box-decoration-clone bg-clip-text text-transparent;
 	/* Direction */
 	@apply bg-gradient-to-br;
 	/* Color Stops */
 	@apply from-primary-500 via-tertiary-500 to-primary-500;
+}
+
+@font-face {
+	font-family: 'Solitero';
+	src: url('/fonts/Solitreo-Regular.ttf');
 }

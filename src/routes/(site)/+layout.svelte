@@ -10,6 +10,7 @@
 		type DrawerSettings
 	} from '@skeletonlabs/skeleton';
 	import type { PageData } from './$types';
+	import Footer from '$lib/sections/Footer.svelte';
 
 	export let data: PageData;
 
@@ -62,4 +63,7 @@
 	</svelte:fragment>
 </AppBar>
 
-<slot />
+<main class="flex flex-col min-h-screen">
+	<slot />
+	<Footer />
+</main>
